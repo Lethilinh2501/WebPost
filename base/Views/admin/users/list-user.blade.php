@@ -16,7 +16,7 @@
         <a href="{{ $_ENV['BASE_URL'] }}admin/dashboard" class="btn btn-secondary">⬅ Quay lại Dashboard</a>
     </header>
 
-    <form action="{{ $_ENV['BASE_URL'] }}users/search" method="GET" class="mb-3 d-flex">
+    <form action="{{ $_ENV['BASE_URL'] }}admin/users/search" method="GET" class="mb-3 d-flex">
         <input type="text" name="keyword" class="form-control me-2" placeholder="Tìm kiếm sản phẩm..." value="{{ $keyword ?? '' }}">
         <button type="submit" class="btn btn-info">Tìm kiếm</button>
     </form>
@@ -25,7 +25,7 @@
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Danh mục</th>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Mật khẩu</th>
                 <th>Người dùng</th>
@@ -36,12 +36,12 @@
             @foreach($users as $value)
             <tr>
                 <td>{{ $value['id'] }}</td>
-                <td>{{ $value['name'] }}</td>
+                <td>{{ $value['username'] }}</td>
                 <td>{{ $value['email'] }}</td>
                 <td>{{ $value['password'] }}</td>
                 <td>{{ $value['role'] }}</td>
                 <td>
-                    <a href="{{ $_ENV['BASE_URL'] }}users/{{ $value['id'] }}/delete" class="btn btn-danger btn-sm"
+                    <a href="{{ $_ENV['BASE_URL'] }}admin/users/{{ $value['id'] }}/delete" class="btn btn-danger btn-sm"
                         onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
                 </td>
             </tr>

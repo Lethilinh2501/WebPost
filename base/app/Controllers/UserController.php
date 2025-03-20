@@ -16,13 +16,13 @@ class UserController extends Controller
     public function index()
     {
         $user = $this->userModel->getUsers();
-        echo $this->blade->run("users.list-user", ["users" => $user]);
+        echo $this->blade->run("admin.users.list-user", ["users" => $user]);
     }
 
     public function delete($id)
      {
         $this->userModel->deleteUsers($id);
-        header('Location: ' . $_ENV['BASE_URL'] . 'users');
+        header('Location: ' . $_ENV['BASE_URL'] . 'admin/users');
      }
 
      public function search()
@@ -31,7 +31,7 @@ class UserController extends Controller
 
         $user = $this->userModel->searchUsers($keyword);
 
-        echo $this->blade->run("users.list-user", [
+        echo $this->blade->run("admin.users.list-user", [
             "users" => $user,
             "keyword" => $keyword
         ]);
