@@ -2,6 +2,7 @@
 
 use Bramus\Router\Router;
 use App\Controllers\CategoryController;
+use App\Controllers\BannerController;
 use App\Controllers\UserController;
 use App\Controllers\DashboardController;
 use App\Controllers\PostController;
@@ -37,6 +38,17 @@ $router->mount('/admin/categories', function () use ($router) {
     $router->post('/{id}/update', CategoryController::class . '@update');
     $router->get('/{id}/delete', CategoryController::class . '@delete');
     $router->get('/search', CategoryController::class . '@search');
+});
+
+// Banners
+$router->mount('/admin/banners', function () use ($router) {
+    $router->get('/', BannerController::class . '@index');
+    $router->get('/create', BannerController::class . '@create');
+    $router->post('/store', BannerController::class . '@store');
+    $router->get('/{id}/edit', BannerController::class . '@edit');
+    $router->post('/{id}/update', BannerController::class . '@update');
+    $router->get('/{id}/delete', BannerController::class . '@delete');
+    $router->get('/search', BannerController::class . '@search');
 });
 
 // Users

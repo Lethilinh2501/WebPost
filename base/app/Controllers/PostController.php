@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\PostModel;
@@ -30,42 +31,42 @@ class PostController extends Controller
 
     // Lưu bài viết mới
     public function store()
-{
-    $validator = new Validator;
+    {
+        $validator = new Validator;
 
-    $validation = $validator->make($_POST, [
-        'title' => 'required|min:1|max:100',
-        'content' => 'required|min:10',
-        'category_id' => 'required|numeric'
-    ]);
+        $validation = $validator->make($_POST, [
+            'title' => 'required|min:1|max:100',
+            'content' => 'required|min:10',
+            'category_id' => 'required|numeric'
+        ]);
 
-    $validation->validate();
-    if ($validation->fails()) {
-        $_SESSION['error'] = $validation->errors()->firstOfAll();
-        header('Location: ' . $_ENV['BASE_URL'] . 'admin/posts/create');
-        exit;
+        $validation->validate();
+        if ($validation->fails()) {
+            $_SESSION['error'] = $validation->errors()->firstOfAll();
+            header('Location: ' . $_ENV['BASE_URL'] . 'admin/posts/create');
+            exit;
+        }
+
+        // Lấy user_id từ session (hoặc thay đổi theo hệ thống xác thực của bạn)
+        $user_id = $_SESSION['user_id'] ?? null;
+
+        if (!$user_id) {
+            $_SESSION['error'] = "User ID không hợp lệ.";
+            header('Location: ' . $_ENV['BASE_URL'] . 'admin/posts/create');
+            exit;
+        }
+
+        // Lưu bài viết
+        $this->postModel->addPost(
+            $user_id,
+            $_POST['title'],
+            $_POST['content'],
+            $_POST['category_id'],
+            $_POST['img_thumbnail'] ?? null
+        );
+
+        header('Location: ' . $_ENV['BASE_URL'] . 'admin/posts');
     }
-
-    // Lấy user_id từ session (hoặc thay đổi theo hệ thống xác thực của bạn)
-    $user_id = $_SESSION['user_id'] ?? null;
-    
-    if (!$user_id) {
-        $_SESSION['error'] = "User ID không hợp lệ.";
-        header('Location: ' . $_ENV['BASE_URL'] . 'admin/posts/create');
-        exit;
-    }
-
-    // Lưu bài viết
-    $this->postModel->addPost(
-        $user_id, 
-        $_POST['title'], 
-        $_POST['content'], 
-        $_POST['category_id'], 
-        $_POST['img_thumbnail'] ?? null
-    );
-
-    header('Location: ' . $_ENV['BASE_URL'] . 'admin/posts');
-}
 
     // Hiển thị form sửa bài viết
     public function edit($id)

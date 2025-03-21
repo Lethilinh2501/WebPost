@@ -53,7 +53,7 @@ class PostModel extends Model
     public function deletePost($id)
     {
         $stmt = $this->queryBuilder->delete('posts')
-            ->where('posts.id = :id') // Sửa lỗi ID không rõ ràng
+            ->where('posts.id = :id')
             ->setParameter('id', $id);
         $this->connection->executeStatement($stmt->getSQL(), $stmt->getParameters());
     }
@@ -63,7 +63,7 @@ class PostModel extends Model
     {
         return $this->queryBuilder->select('*')
             ->from('posts')
-            ->where('posts.id = :id') // Sửa lỗi ID không rõ ràng
+            ->where('posts.id = :id')
             ->setParameter('id', $id)
             ->fetchAssociative();
     }
