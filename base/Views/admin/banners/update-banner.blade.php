@@ -21,36 +21,21 @@
         }
     @endphp
 
-    <form action="{{ $_ENV['BASE_URL'] }}admin/posts/{{ $post['id'] }}/update" method="POST"
+    <form action="{{ $_ENV['BASE_URL'] }}admin/banners/{{ $banner['id'] }}/update" method="POST"
         enctype="multipart/form-data" class="border p-4 rounded shadow-sm bg-light">
         <div class="mb-3">
             <label class="form-label">Tiêu đề bài viết</label>
             <input type="text" name="title" class="form-control" placeholder="Nhập tiêu đề bài viết"
-                value="{{ $post['title'] }}">
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Danh mục</label>
-            <select name="category_id" class="form-select">
-                @foreach ($categories as $value)
-                    <option @if ($post['category_id'] == $value['id']) selected @endif value="{{ $value['id'] }}">
-                        {{ $value['name'] }}</option>
-                @endforeach
-            </select>
+                value="{{ $banner['title'] }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Ảnh bài viết</label>
-            @if ($post['img_thumbnail'] != null)
-                <img src="{{ $_ENV['BASE_URL'] . $post['img_thumbnail'] }}" alt="Ảnh bài viết" class="img-thumbnail"
+            @if ($banner['image'] != null)
+                <img src="{{ $_ENV['BASE_URL'] . $banner['image'] }}" alt="Ảnh bài viết" class="img-thumbnail"
                     width="80">
             @endif
             <input type="file" name="image" class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Nội dung bài viết</label>
-            <textarea name="content" class="form-control" placeholder="Nhập nội dung bài viết" rows="5">{{ $post['content'] }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-success">Cập nhật</button>

@@ -21,7 +21,8 @@
     }
     ?>
 
-    <form action="<?= $_ENV['BASE_URL'] ?>admin/posts/store" method="POST" enctype="multipart/form-data" class="border p-4 rounded shadow-sm bg-light">
+    <form action="<?= $_ENV['BASE_URL'] ?>admin/posts/store" method="POST" enctype="multipart/form-data"
+        class="border p-4 rounded shadow-sm bg-light">
         <div class="mb-3">
             <label class="form-label">Tiêu đề bài viết</label>
             <input type="text" name="title" class="form-control" placeholder="Nhập tiêu đề bài viết" required>
@@ -35,7 +36,7 @@
         <div class="mb-3">
             <label class="form-label">Danh mục bài viết</label>
             <select name="category_id" class="form-select" required>
-                @if(is_array($categories) && count($categories) > 0)
+                @if (is_array($categories) && count($categories) > 0)
                     @foreach ($categories as $value)
                         <option value="{{ $value['id'] }}">{{ $value['name'] }}</option>
                     @endforeach
@@ -43,7 +44,6 @@
                     <option disabled>Không có danh mục nào</option>
                 @endif
             </select>
-            
         </div>
 
         <div class="mb-3">

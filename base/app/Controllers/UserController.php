@@ -20,12 +20,12 @@ class UserController extends Controller
     }
 
     public function delete($id)
-     {
+    {
         $this->userModel->deleteUsers($id);
         header('Location: ' . $_ENV['BASE_URL'] . 'admin/users');
-     }
+    }
 
-     public function search()
+    public function search()
     {
         $keyword = $_GET['keyword'] ?? '';
 

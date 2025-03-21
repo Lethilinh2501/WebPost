@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Admin Dashboard' }}</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -16,18 +17,22 @@
         body {
             background-color: #f8f9fa;
         }
+
         .navbar {
             background-color: #343a40;
         }
+
         .navbar a {
             color: white;
             text-decoration: none;
         }
+
         .navbar a:hover {
             color: #f8f9fa;
         }
     </style>
 </head>
+
 <body>
 
     <!-- Thanh điều hướng -->
@@ -35,7 +40,8 @@
         <a class="navbar-brand" href="#">Admin Panel</a>
         <div class="ms-auto">
             <span class="text-white me-3">Xin chào, <strong>{{ $user['name'] ?? 'Admin' }}</strong></span>
-            <a href="/PHP2/base/logout" class="btn btn-danger btn-sm"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+            <a href="/PHP2/base/logout" class="btn btn-danger btn-sm"><i class="fa-solid fa-right-from-bracket"></i>
+                Đăng xuất</a>
         </div>
     </nav>
 
@@ -63,6 +69,12 @@
                     <a href="/WebPost/base/admin/posts" class="btn btn-outline-info">Xem chi tiết</a>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="card shadow p-3 text-center">
+                    <h5 class="text-danger"><i class="fa-solid fa-list"></i> Banner</h5>
+                    <a href="/WebPost/base/admin/banners" class="btn btn-outline-danger">Xem chi tiết</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -70,5 +82,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-</html>
 
+</html>

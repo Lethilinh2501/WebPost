@@ -63,6 +63,12 @@
  <a href="/WebPost/base/admin/posts" class="btn btn-outline-info">Xem chi tiết</a>
  </div>
  </div>
+ <div class="col-md-3">
+ <div class="card shadow p-3 text-center">
+ <h5 class="text-danger"><i class="fa-solid fa-list"></i> Banner</h5>
+ <a href="/WebPost/base/admin/banners" class="btn btn-outline-danger">Xem chi tiết</a>
+ </div>
+ </div>
  </div>
  </div>
 

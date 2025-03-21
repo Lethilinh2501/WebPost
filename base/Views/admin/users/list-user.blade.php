@@ -10,14 +10,15 @@
 </head>
 
 <body class="container mt-4">
-    
+
     <header class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="m-0">Danh sách người dùng</h1>
         <a href="{{ $_ENV['BASE_URL'] }}admin/dashboard" class="btn btn-secondary">⬅ Quay lại Dashboard</a>
     </header>
 
     <form action="{{ $_ENV['BASE_URL'] }}admin/users/search" method="GET" class="mb-3 d-flex">
-        <input type="text" name="keyword" class="form-control me-2" placeholder="Tìm kiếm sản phẩm..." value="{{ $keyword ?? '' }}">
+        <input type="text" name="keyword" class="form-control me-2" placeholder="Tìm kiếm sản phẩm..."
+            value="{{ $keyword ?? '' }}">
         <button type="submit" class="btn btn-info">Tìm kiếm</button>
     </form>
 
@@ -33,18 +34,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($users as $value)
-            <tr>
-                <td>{{ $value['id'] }}</td>
-                <td>{{ $value['username'] }}</td>
-                <td>{{ $value['email'] }}</td>
-                <td>{{ $value['password'] }}</td>
-                <td>{{ $value['role'] }}</td>
-                <td>
-                    <a href="{{ $_ENV['BASE_URL'] }}admin/users/{{ $value['id'] }}/delete" class="btn btn-danger btn-sm"
-                        onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
-                </td>
-            </tr>
+            @foreach ($users as $value)
+                <tr>
+                    <td>{{ $value['id'] }}</td>
+                    <td>{{ $value['username'] }}</td>
+                    <td>{{ $value['email'] }}</td>
+                    <td>{{ $value['password'] }}</td>
+                    <td>{{ $value['role'] }}</td>
+                    <td>
+                        <a href="{{ $_ENV['BASE_URL'] }}admin/users/{{ $value['id'] }}/delete"
+                            class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>
